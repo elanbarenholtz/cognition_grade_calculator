@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognition —— EXP 3505 —— Grade Calculator</title>
+
+</head>
+<body>
+    <h1>Grade Calculator</h1>
+    <form id="gradeForm">
+        <label for="assignments">Assignments (out of 100):</label>
+        <input type="number" id="assignments" name="assignments" required><br><br>
+
+        <label for="exams">Exams (out of 100):</label>
+        <input type="number" id="exams" name="exams" required><br><br>
+
+        <input type="button" value="Calculate" onclick="calculateGrade()">
+    </form>
+    <h2>Total Weighted Score: <span id="totalScore"></span></h2>
+    <h2>Letter Grade: <span id="letterGrade"></span></h2>
+
+    <script>
+        function calculateGrade() {
+            let assignments = parseFloat(document.getElementById("assignments").value);
+            let exams = parseFloat(document.getElementById("exams").value);
+
+            let totalScore = (assignments * 0.2) + (exams * 0.8);
+            document.getElementById("totalScore").innerText = totalScore.toFixed(2);
+
+            let letterGrade = '';
+            if (totalScore >= 93) letterGrade = 'A';
+            else if (totalScore >= 90) letterGrade = 'A-';
+            else if (totalScore >= 87) letterGrade = 'B+';
+            else if (totalScore >= 83) letterGrade = 'B';
+            else if (totalScore >= 80) letterGrade = 'B-';
+            else if (totalScore >= 77) letterGrade = 'C+';
+            else if (totalScore >= 73) letterGrade = 'C';
+            else if (totalScore >= 70) letterGrade = 'C-';
+            else if (totalScore >= 67) letterGrade = 'D+';
+            else if (totalScore >= 63) letterGrade = 'D';
+            else if (totalScore >= 60) letterGrade = 'D-';
+            else letterGrade = 'F';
+
+            document.getElementById("letterGrade").innerText = letterGrade;
+        }
+    </script>
+</body>
+</html>
